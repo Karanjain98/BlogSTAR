@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         rv= (RecyclerView) findViewById(R.id.rv);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setHasFixedSize(true);
-        dbReference = FirebaseDatabase.getInstance().getReference().child("BLOG");
+        rv.setHasFixedSize(false);
+        dbReference = FirebaseDatabase.getInstance().getReference().child("BLOGDATA");
 
     }
 
@@ -38,13 +38,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.action_add)
-            startActivity(new Intent(MainActivity.this,PostActivity.class));
-        return super.onOptionsItemSelected(item);
     }
     public static class BlogViewHolder extends RecyclerView.ViewHolder {
         View view;
@@ -71,6 +64,18 @@ public class MainActivity extends AppCompatActivity {
             Picasso.with(cntx).load(image).fit().into(imView);
 
         }
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.action_settings) {
+                // Log setting open event with category="ui", action="open", and label="settings"
+                MyApp.tracker().send(new HitBuilders.EventBuilder("ui", "open")
+                    .setLabel("settings")
+                    .build());
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     }
 
     @Override
