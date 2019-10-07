@@ -6,6 +6,7 @@ package com.code.blogstar;
 
 public class Blog {
     String Title;
+    String BlogData;
     String Description;
     String ImageUrl;
     public Blog()
@@ -16,7 +17,11 @@ public class Blog {
         this.Description = description;
         this.ImageUrl = image;
     }
-
+    public String getDataforBlog()
+    {
+        return BlogData;
+    }
+        
     public String getTitle() {
         return Title;
     }
