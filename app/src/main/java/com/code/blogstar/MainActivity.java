@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 MyApp.tracker().send(new HitBuilders.EventBuilder("ui", "open")
                     .setLabel("settings")
                     .build());
+                MyApp.number_of_blogs().set(new Limit(5,50)).setCurrent().build();
                 return true;
         }
         return super.onOptionsItemSelected(item);
