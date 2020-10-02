@@ -19,6 +19,7 @@ package com.code.blogstar;
 public class MainActivity extends AppCompatActivity {
     RecyclerView rv;
     DatabaseReference dbReference;
+    FirebaseDatabase fbdb;
     public static final String TAG="MAINLOLO";
 
     @Override
@@ -30,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
         rv= (RecyclerView) findViewById(R.id.rv);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setHasFixedSize(false);
-        dbReference = FirebaseDatabase.getInstance().getReference().child("BLOGDATA");
-
+        fbReference = FirebaseDatabase.getInstance().getReference().child("BLOGDATA");
     }
 
     @Override
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 (Blog.class,
                 R.layout.blog_item,
                 BlogViewHolder.class,
-                dbReference
+                fbReference
                 )
         {
             @Override
